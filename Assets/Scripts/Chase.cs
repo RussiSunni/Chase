@@ -44,6 +44,10 @@ public class Chase : MonoBehaviour
                 audioPlaying = true;
                 audioSource.PlayOneShot(artemisHey);
             }
+
+            transform.position = new Vector2(-5, 0);
+            target.position = new Vector2(5, 0);
+            PlayerMovement.lastClickedPosition = new Vector2(5, 0);
         }
 
         // make animal sprite behind or in front of player

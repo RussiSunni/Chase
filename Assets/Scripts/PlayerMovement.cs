@@ -6,14 +6,19 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     float speed = 10f;
-    Vector2 lastClickedPosition;
+    public static Vector2 lastClickedPosition;
     bool moving;
     [SerializeField]
     AudioClip barrier;
     [SerializeField]
     AudioSource audioSource;
     private bool audioPlaying;
+    private Transform animal;
 
+    private void Start()
+    {
+        animal = GameObject.FindGameObjectWithTag("Animal").GetComponent<Transform>();
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -25,7 +30,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (moving && (Vector2)transform.position != lastClickedPosition)
         {
-            if(lastClickedPosition.x > -7 && lastClickedPosition.x < 7
+            // check that mouse click is within the screen bounds
+            if (lastClickedPosition.x > -7 && lastClickedPosition.x < 7
                 && lastClickedPosition.y > -4 && lastClickedPosition.y < 4)
             {
                 float step = speed * Time.deltaTime;
@@ -33,27 +39,17 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                // play sound
+                // play sound effect if mouse clicks on barrier at edge of screen
                 if (!audioPlaying)
-                 
-                    {
-                        audioPlaying = true;
-                        audioSource.PlayOneShot(barrier);
-                    }
-               // StartCoroutine(PlayAudio());
-            }            
+                {
+                    audioPlaying = true;
+                    audioSource.PlayOneShot(barrier);
+                }
+            }
         }
         else
         {
             moving = false;
         }
-    }
-
-    private IEnumerator PlayAudio()
-    {
-        audioPlaying = true;
-        audioSource.PlayOneShot(barrier);
-        yield return new WaitForSeconds(1);
-        audioPlaying = false;
     }
 }
