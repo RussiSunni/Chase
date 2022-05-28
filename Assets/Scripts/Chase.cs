@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Chase : MonoBehaviour
 {
-    public float speed;
-    public float stoppingDistance;
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private float stoppingDistance;
     private Transform target;
     [SerializeField]
     AudioClip artemisHey;
@@ -22,6 +24,7 @@ public class Chase : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
         {
+            // make animal face the correct direction
             if (transform.position.x < target.position.x)
             {
                 GetComponent<SpriteRenderer>().flipX = true;
@@ -35,15 +38,26 @@ public class Chase : MonoBehaviour
         }
         else
         {
+            // play sound effect if catch player
             if (!audioPlaying)
-                StartCoroutine(PlayAudio());
+            {
+                audioPlaying = true;
+                audioSource.PlayOneShot(artemisHey);
+            }
         }
-    }
-    private IEnumerator PlayAudio()
-    {
-        audioPlaying = true;
-        audioSource.PlayOneShot(artemisHey);
-        yield return new WaitForSeconds(1);
-        audioPlaying = false;
+
+        // make animal sprite behind or in front of player
+        if (transform.position.y < target.position.y)
+        {
+            GetComponent<SpriteRenderer>().sortingOrder = 3;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sortingOrder = 1;
+        }
+
+        // only allow for new audio after a mouse click
+        if (Input.GetMouseButtonDown(0))
+            audioPlaying = false;
     }
 }

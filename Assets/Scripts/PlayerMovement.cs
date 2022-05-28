@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
         {
             lastClickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             moving = true;
+            audioPlaying = false;
         }
 
         if (moving && (Vector2)transform.position != lastClickedPosition)
@@ -34,7 +35,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 // play sound
                 if (!audioPlaying)
-                StartCoroutine(PlayAudio());
+                 
+                    {
+                        audioPlaying = true;
+                        audioSource.PlayOneShot(barrier);
+                    }
+               // StartCoroutine(PlayAudio());
             }            
         }
         else
