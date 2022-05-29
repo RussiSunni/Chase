@@ -14,10 +14,13 @@ public class PlayerMovement : MonoBehaviour
     AudioSource audioSource;
     private bool audioPlaying;
     private Transform animal;
+    private Animator animator;
 
     private void Start()
     {
         animal = GameObject.FindGameObjectWithTag("Animal").GetComponent<Transform>();
+        animator = GetComponent<Animator>();
+        animator.enabled = false;
     }
     private void Update()
     {
@@ -26,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
             lastClickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             moving = true;
             audioPlaying = false;
+            animator.enabled = true;
         }
 
         if (moving && (Vector2)transform.position != lastClickedPosition)
@@ -44,12 +48,14 @@ public class PlayerMovement : MonoBehaviour
                 {
                     audioPlaying = true;
                     audioSource.PlayOneShot(barrier);
+                    animator.enabled = false;
                 }
             }
         }
         else
         {
             moving = false;
+            animator.enabled = false;
         }
     }
 }
