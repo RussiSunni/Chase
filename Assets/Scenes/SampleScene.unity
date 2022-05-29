@@ -484,6 +484,8 @@ MonoBehaviour:
   R: {fileID: 755540637}
   O: {fileID: 2104403944}
   G: {fileID: 1066019450}
+  player: {fileID: 1166547029}
+  success: {fileID: 8300000, guid: b96c42673b407e040a4deef9bd542cb8, type: 3}
 --- !u!1 &793078677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2491,6 +2493,10 @@ MonoBehaviour:
   stoppingDistance: 2.5
   artemisHey: {fileID: 8300000, guid: b293be90c7114c94cb2d3554d76768c4, type: 3}
   audioSource: {fileID: 1166547029}
+  F: {fileID: 0}
+  R: {fileID: 0}
+  O: {fileID: 0}
+  G: {fileID: 0}
 --- !u!61 &891813837
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2799,6 +2805,8 @@ MonoBehaviour:
   R: {fileID: 755540637}
   O: {fileID: 2104403944}
   G: {fileID: 1066019450}
+  player: {fileID: 1166547029}
+  success: {fileID: 8300000, guid: b96c42673b407e040a4deef9bd542cb8, type: 3}
 --- !u!1 &1066019450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2925,6 +2933,8 @@ MonoBehaviour:
   R: {fileID: 755540637}
   O: {fileID: 2104403944}
   G: {fileID: 1066019450}
+  player: {fileID: 1166547029}
+  success: {fileID: 8300000, guid: b96c42673b407e040a4deef9bd542cb8, type: 3}
 --- !u!1 &1166547023
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,6 +3524,10 @@ MonoBehaviour:
   stoppingDistance: 2.5
   artemisHey: {fileID: 8300000, guid: b293be90c7114c94cb2d3554d76768c4, type: 3}
   audioSource: {fileID: 1166547029}
+  F: {fileID: 980247301}
+  R: {fileID: 755540637}
+  O: {fileID: 2104403944}
+  G: {fileID: 1066019450}
 --- !u!1 &2104403944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3640,3 +3654,5 @@ MonoBehaviour:
   R: {fileID: 755540637}
   O: {fileID: 2104403944}
   G: {fileID: 1066019450}
+  player: {fileID: 1166547029}
+  success: {fileID: 8300000, guid: b96c42673b407e040a4deef9bd542cb8, type: 3}

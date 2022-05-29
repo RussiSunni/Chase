@@ -14,6 +14,8 @@ public class Chase : MonoBehaviour
     [SerializeField]
     AudioSource audioSource;
     private bool audioPlaying;
+    [SerializeField]
+    GameObject F, R, O, G;
 
     private void Start()
     {
@@ -45,9 +47,18 @@ public class Chase : MonoBehaviour
                 audioSource.PlayOneShot(artemisHey);
             }
 
+            // if the frog catches the player
             transform.position = new Vector2(-5, 0);
             target.position = new Vector2(5, 0);
             PlayerMovement.lastClickedPosition = new Vector2(5, 0);
+            F.GetComponent<SpriteRenderer>().enabled = true;
+            F.GetComponent<BoxCollider2D>().enabled = true;
+            R.GetComponent<SpriteRenderer>().enabled = true;
+            R.GetComponent<BoxCollider2D>().enabled = true;
+            O.GetComponent<SpriteRenderer>().enabled = true;
+            O.GetComponent<BoxCollider2D>().enabled = true;
+            G.GetComponent<SpriteRenderer>().enabled = true;
+            G.GetComponent<BoxCollider2D>().enabled = true;
         }
 
         // make animal sprite behind or in front of player
