@@ -10,6 +10,8 @@ public class LetterCollide : MonoBehaviour
     AudioSource player;
     [SerializeField]
     AudioClip success;
+    [SerializeField]
+    AudioClip victory;
 
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -26,6 +28,7 @@ public class LetterCollide : MonoBehaviour
             {
                 R.GetComponent<SpriteRenderer>().enabled = false;
                 R.GetComponent<BoxCollider2D>().enabled = false;
+                player.PlayOneShot(success);
             }
         }
         else if (gameObject.name == "o")
@@ -34,6 +37,7 @@ public class LetterCollide : MonoBehaviour
             {
                 O.GetComponent<SpriteRenderer>().enabled = false;
                 O.GetComponent<BoxCollider2D>().enabled = false;
+                player.PlayOneShot(success);
             }
         }
         else if (gameObject.name == "g")
@@ -41,7 +45,10 @@ public class LetterCollide : MonoBehaviour
             if (!F.GetComponent<SpriteRenderer>().enabled && !R.GetComponent<SpriteRenderer>().enabled && !O.GetComponent<SpriteRenderer>().enabled)
             {
                 G.GetComponent<SpriteRenderer>().enabled = false;
-                G.GetComponent<BoxCollider2D>().enabled = false;
+                G.GetComponent<BoxCollider2D>().enabled = false;               
+                player.PlayOneShot(victory);
+
+                Chase.complete = true;
             }
         }
     }
